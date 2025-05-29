@@ -1,0 +1,56 @@
+<div *ngIf="!load">
+    <div class="spinner center">
+        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />
+    </div>
+    <div class="center">
+        <p style="font-size: 30px">Cargando Datos...</p>
+    </div>
+</div>
+<div *ngIf="load">
+    <h1 class="center">Super Heroes</h1>
+    <form [formGroup]="heroeForm">
+        <table class="centered">
+            <thead class="light-blue accent-3">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Editorial</th>
+                    <th>Ocupacion</th>
+                    <th>Habilidades</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="lime lighten-3">
+                <tr *ngFor="let heroe of superheroes">
+                    <td style="width: 150px">{{heroe.name != '-' ? heroe.name : 'N/A'}}</td>
+                    <td style="width: 150px">{{heroe.biography.publisher != '-' ? heroe.biography.publisher : 'N/A'}}</td>
+                    <td>{{heroe.work.occupation != '-' ? heroe.work.occupation : 'N/A'}}</td>
+                    <td style="width: 150px">
+                        Poder: {{heroe.powerstats.power}} <br>
+                        Inteligencia: {{heroe.powerstats.intelligence}} <br>
+                        Combate: {{heroe.powerstats.combat}} <br>
+                        Durabilidad: {{heroe.powerstats.durability}} <br>
+                        Velocidad: {{heroe.powerstats.speed}} <br>
+                        Fuerza: {{heroe.powerstats.strength}} <br>
+                    </td>
+                    <td>
+                        <a class="waves-effect waves-light green btn" style="margin-left: 5px;" (click)="view(heroe)"><i class="material-icons center">visibility</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul class="pagination center" style="width: auto;">
+            <li class="{{actualPage != 1 ? 'waves-effect' : 'disabled'}}"><a (click)="back()"><i class="material-icons">chevron_left</i></a></li>
+            <li class="{{item == actualPage ? 'active' : 'waves-effect'}}" *ngFor="let item of pages"><a (click)="mostrar(item)">
+                {{item}}
+            </a></li>
+            <li class="{{endPage != actualPage ? 'waves-effect' : 'disabled'}}"><a (click)="next()"><i class="material-icons">chevron_right</i></a></li>
+            <!--<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>-->
+        </ul>
+    </form>
+</div>

@@ -1,0 +1,138 @@
+<div *ngIf="!load">
+    <div class="spinner center">
+        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />
+    </div>
+    <div class="center">
+        <p style="font-size: 30px">Cargando Datos...</p>
+    </div>
+</div>
+<div *ngIf="load">
+    <div class="row" style="margin-top: 3%;">
+        <div class="col s12" style="text-align: end;">
+            <a class="waves-effect waves-light blue btn" style="margin-left: 5px;" (click)="close()" ><i class="material-icons center">close</i></a>
+        </div>
+    </div>
+    <h2 class="center" style="font-size: 35px" mat-dialog-title>Datos de {{heroe.name}}</h2>
+    <mat-dialog-content style="margin: 5% 10% 5% 10%;">
+        <div class="row">
+            <div class="col s6 center">
+                <img src="{{heroe.images.sm}}" alt="">
+            </div>
+            <div class="col s6" style=" font-size: 20px; color: black;">
+                <div class="col s12 center"><strong>APARIENCIA</strong></div>
+                <div class="col s12"><br></div>
+                <div class="col s6">Genero:</div>
+                <div class="col s6">{{heroe.appearance.gender}}</div>
+                <div class="col s6">Color de pelo:</div>
+                <div class="col s6">{{heroe.appearance.hairColor}}</div>
+                <div class="col s6">Color de ojos:</div>
+                <div class="col s6">{{heroe.appearance.eyeColor}}</div>
+                <div class="col s6">Altura:</div>
+                <div class="col s6">{{heroe.appearance.height[0]}} {{heroe.appearance.height[1]}}</div>
+                <div class="col s6">Peso:</div>
+                <div class="col s6">{{heroe.appearance.weight[0]}} {{heroe.appearance.weight[1]}}</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12 center" style=" font-size: 20px; color: black;">
+                <strong>BIOGRAFIA</strong>
+            </div>
+            <div class="col s12"><br></div>
+            <div class="col s12">
+                <table class="centered">
+                    <thead class="light-blue accent-3">
+                        <tr>
+                            <th>Aliados</th>
+                            <th>Alineación</th>
+                            <th>Alter Ego</th>
+                            <th>Primera Apariencia</th>
+                            <th>Nombre Completo</th>
+                            <th>Lugar de Nacimiento</th>
+                            <th>Editorial</th>
+                        </tr>
+                    </thead>
+                    <tbody class="lime lighten-3">
+                        <tr>
+                            <td style="width: 150px">{{(heroe.biography.aliases).join(',')}}</td>
+                            <td style="width: 150px">{{heroe.biography.alignment}}</td>
+                            <td style="width: 150px">{{heroe.biography.alterEgos}}</td>
+                            <td style="width: 150px">{{heroe.biography.firstAppearance}}</td>
+                            <td style="width: 150px">{{heroe.biography.fullName}}</td>
+                            <td style="width: 150px">{{heroe.biography.placeOfBirth}}</td>
+                            <td style="width: 150px">{{heroe.biography.publisher}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s12 center" style=" font-size: 20px; color: black;">
+                <br><strong>CONECCIONES</strong>
+            </div>
+            <div class="col s12"><br></div>
+            <div class="col s12">
+                <table class="centered">
+                    <thead class="light-blue accent-3">
+                        <tr>
+                            <th>Afiliación Grupal</th>
+                            <th>Familia</th>
+                        </tr>
+                    </thead>
+                    <tbody class="lime lighten-3">
+                        <tr>
+                            <td style="width: 150px">{{(heroe.connections.groupAffiliation)}}</td>
+                            <td style="width: 150px">{{heroe.connections.relatives}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s12 center" style=" font-size: 20px; color: black;">
+                <br><strong>TRABAJO</strong>
+            </div>
+            <div class="col s12"><br></div>
+            <div class="col s12">
+                <table class="centered">
+                    <thead class="light-blue accent-3">
+                        <tr>
+                            <th>Base</th>
+                            <th>Ocupación</th>
+                        </tr>
+                    </thead>
+                    <tbody class="lime lighten-3">
+                        <tr>
+                            <td style="width: 150px">{{heroe.work.base}}</td>
+                            <td style="width: 150px">{{heroe.work.occupation}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s12 center" style=" font-size: 20px; color: black;">
+                <br><strong>HABILIDADES</strong>
+            </div>
+            <div class="col s12"><br></div>
+            <div class="col s12">
+                <table class="centered">
+                    <thead class="light-blue accent-3">
+                        <tr>
+                            <th>Poder</th>
+                            <th>Inteligencia</th>
+                            <th>Combate</th>
+                            <th>Durabilidad</th>
+                            <th>Velocidad</th>
+                            <th>Fuerza</th>
+                        </tr>
+                    </thead>
+                    <tbody class="lime lighten-3">
+                        <tr>
+                            <td style="width: 150px">{{heroe.powerstats.power}}</td>
+                            <td style="width: 150px">{{heroe.powerstats.intelligence}}</td>
+                            <td style="width: 150px">{{heroe.powerstats.combat}}</td>
+                            <td style="width: 150px">{{heroe.powerstats.durability}}</td>
+                            <td style="width: 150px">{{heroe.powerstats.speed}}</td>
+                            <td style="width: 150px">{{heroe.powerstats.strength}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>
